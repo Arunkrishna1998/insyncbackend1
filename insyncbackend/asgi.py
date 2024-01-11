@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/5.0/howto/deployment/asgi/
 
 import os
 import django
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'insyncbackend.settings')
+django.setup()
 from .channelsmiddleware import JwtAuthMiddleware
 from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.security.websocket import AllowedHostsOriginValidator
@@ -17,8 +19,7 @@ from chat.routing import websocket_urlpatterns as chat_websocket_urlpatterns
 from post.routing import websocket_urlpatterns as post_websocket_urlpatterns
 
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'insyncbackend.settings')
-django.setup()
+
 
 django_asgi_application = get_asgi_application()
 
