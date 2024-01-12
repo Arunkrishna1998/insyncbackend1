@@ -142,7 +142,7 @@ DATABASES = {
         'USER': 'insyncuser',
         'PASSWORD': 'insync@123',
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': '5432',
     }
 }
 
