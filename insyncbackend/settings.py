@@ -108,6 +108,10 @@ CORS_ALLOW_METHODS = (
     "PUT",
 )
 
+CSRF_TRUSTED_ORIGINS = ['https://www.arunkrishna.online', 'https://arunkrishna.online']
+
+
+
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels.layers.InMemoryChannelLayer"
