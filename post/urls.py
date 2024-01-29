@@ -3,7 +3,7 @@ from .views import ( PostListView, CreatePostView, DeletePostView, UpdatePostVie
                     CreateCommentView, DeleteCommentView, FollowView, NetworkListView, FollowListView, 
                     PostDetailView, NotificationsView, NotificationsSeenView, ProfileView, ReportPostView, 
                     PostBlockedListView, PostReportedListView, ContactListView, PostSearchView, ListTagsAPIView,
-                    CreateInterestAPIView, UserPostListView, UpdateInterestAPIView, RePostView, UnBlockPostView )
+                    CreateInterestAPIView, UserPostListView, UpdateInterestAPIView, RePostView, UnBlockPostView, UserSearchView )
 
 # app_name = 'post'
 
@@ -11,6 +11,7 @@ urlpatterns = [
     path('', PostListView.as_view(), name='posts'),
     path('user-posts/', UserPostListView.as_view(), name='user-posts'),
     path('search/', PostSearchView.as_view(), name='post-search'),
+    path('user-search/', UserSearchView.as_view(), name='user-search'),
     path('tags/', ListTagsAPIView.as_view(), name='list-tags'),
     path('interests/', CreateInterestAPIView.as_view(), name='interests'),
     path('update-interests/', UpdateInterestAPIView.as_view(), name='update-interests'),

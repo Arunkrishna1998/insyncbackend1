@@ -54,6 +54,21 @@ class PostSearchView(APIView):
         queryset = Post.objects.filter(tags__name__icontains=tag_name, is_deleted=False, is_blocked=False)
         serializer = PostSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    
+class UserSearchView(generics.ListAPIView):
+    # permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UserSerializer
+
+    def get(self, request):
+        query = request.query_params.get('query', '').strip().lower()
+        queryset = User.objects.filter(
+            Q(first_name__icontains=query) |
+            Q(last_name__icontains=query) |
+            Q(email__icontains=query)
+        )
+        serializer = self.serializer_class(queryset, many=True)
+        return Response(serializer.data)
 
 
 class PostBlockedListView(generics.ListAPIView):
@@ -460,3 +475,4 @@ class ListTagsAPIView(APIView):
         serialized_tags = TagsSerializer(tags, many=True).data
 
         return Response({"tags": serialized_tags, "interests": serialized_interests}, status=status.HTTP_200_OK)
+    
